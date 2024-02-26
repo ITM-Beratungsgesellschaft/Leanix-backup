@@ -23,8 +23,8 @@ jobs:
           pip install -r ./src/requirements.txt
 
       - name: Run script
-        with:
-          repo-token: ${{ secrets.OV_PAT }}
+        env:
+          token: ${{ secrets.OV_PAT }}
         run: python ./src/create_leanix_backup.py ${{ secrets.APITOKEN_DEV }} ${{ secrets.WORKSPACEID_DEV }} ${{ secrets.HOSTNAME }}
 
 
