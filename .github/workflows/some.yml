@@ -7,7 +7,7 @@ jobs:
   
   create-leanix-backup:
     runs-on: self-hosted
-    timeout-minutes: 4320
+    timeout-minutes: 9999
     steps:
       - name: checkout repo
         uses: actions/checkout@v2
@@ -23,6 +23,8 @@ jobs:
           pip install -r ./src/requirements.txt
 
       - name: Run script
+        with:
+          repo-token: ${{ secrets.OV_PAT }}
         run: python ./src/create_leanix_backup.py ${{ secrets.APITOKEN_DEV }} ${{ secrets.WORKSPACEID_DEV }} ${{ secrets.HOSTNAME }}
 
 
